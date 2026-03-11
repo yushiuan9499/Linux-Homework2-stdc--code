@@ -2,6 +2,7 @@
 #include <stdlib.h>
 #include <string.h>
 #include <time.h>
+#include <unistd.h>
 
 #define GAPS_HOLD 128
 
@@ -122,6 +123,9 @@ int main()
 
 	flush_cache();
 	struct list_node *mid_node;
+	/* Print PID */
+	printf("PID: %d\n", getpid());
+	sleep(10);
 	mid_node = middle_node(head);
 	printf("Middle node value: %d\n", mid_node->val);
 	for (struct list_node *cur = head; cur != NULL;) {
