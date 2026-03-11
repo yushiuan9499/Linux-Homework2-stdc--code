@@ -46,12 +46,13 @@ struct list_node *middle_node(struct list_node *head)
 void flush_cache()
 {
 	const int CHUNK_COUNT = 16;
+	const int CHUNK_SIZE = 1024; // 1KB
 	unsigned char *chunk[CHUNK_COUNT];
 	for (int i = 0; i < CHUNK_COUNT; i++) {
-		chunk[i] = malloc(1024 * 1024); // Allocate 1MB
+		chunk[i] = malloc(CHUNK_SIZE);
 		if (chunk[i]) {
 			memset(chunk[i], 0,
-			       1024 * 1024); // Write to the chunk to ensure it's loaded into the cache
+			       CHUNK_SIZE); // Write to the chunk to ensure it's loaded into the cache
 		}
 	}
 	for (int i = 0; i < CHUNK_COUNT; i++) {
@@ -90,7 +91,7 @@ int main()
 	for (int i = 0; i < N; i++) {
 		/* Allocate a large block of memory to create a gap */
 		if (gaps[i % GAPS_HOLD] != NULL) {
-			free(arr[i % GAPS_HOLD]);
+			free(gaps[i % GAPS_HOLD]);
 		}
 		gaps[i % GAPS_HOLD] = malloc(
 			(size_t)(rand() + 100)); // Greater than 100 bytes

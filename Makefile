@@ -4,7 +4,7 @@ FLAGS=-Wall -Wextra
 BUILD_DIR=build
 
 .PHONY: all cache_test_counting cache_test_f_s_ptr sanitized clean
-all: cache_test_counting
+all: cache_test_counting cache_test_f_s_ptr
 
 cache_test_counting: $(BUILD_DIR)/cache_test_counting_o0 $(BUILD_DIR)/cache_test_counting_o1 $(BUILD_DIR)/cache_test_counting_o2
 
