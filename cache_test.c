@@ -47,7 +47,7 @@ struct list_node *middle_node(struct list_node *head)
 void flush_cache()
 {
 	const int CHUNK_COUNT = 16;
-	const int CHUNK_SIZE = 1024; // 1KB
+	const int CHUNK_SIZE = 1024 * 1024; // 1MB
 	unsigned char *chunk[CHUNK_COUNT];
 	for (int i = 0; i < CHUNK_COUNT; i++) {
 		chunk[i] = malloc(CHUNK_SIZE);
